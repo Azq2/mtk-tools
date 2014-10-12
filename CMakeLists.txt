@@ -29,3 +29,9 @@ set (${CXXFLAGS} "${CXXFLAGS} -g ")
 include_directories (include)
 add_executable (mtk_unpackbootimg ${SOURCES_unpackbootimg} ${SOURCES} ${HEADERS} ${HEADERS_unpackbootimg})
 add_executable (mtk_container ${SOURCES_container} ${SOURCES} ${HEADERS} ${HEADERS_container})
+
+INSTALL(TARGETS mtk_unpackbootimg mtk_container
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+)
