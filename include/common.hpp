@@ -1,5 +1,3 @@
-// (c) Azq2, 12.10.2014
-
 #pragma once
 
 #include <cstdio>
@@ -10,6 +8,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <libgen.h>
+#include <stdarg.h>
 
 #define clen(s) (s), (sizeof(s) - 1)
 #define lenc(s) (sizeof(s) - 1), (s)
@@ -17,15 +16,13 @@
 #define blen(s) (s), sizeof(s)
 #define lenb(s) sizeof(s), (s)
 
-#define MTK_CONTAINER "\x88\x16\x88\x58"
+#define MTK_CONTAINER ((const unsigned char [4]) {0x88, 0x16, 0x88, 0x58})
 
 #define BOOT_MAGIC "ANDROID!"
 #define BOOT_MAGIC_SIZE 8
 #define BOOT_NAME_SIZE 16
 #define BOOT_ARGS_SIZE 512
 #define BOOT_EXTRA_ARGS_SIZE 1024
-
-const char *prog_name = NULL;
 
 enum {
 	TYPE_KERNEL = 0, 
@@ -81,11 +78,9 @@ struct android_boot_img {
 	unsigned int length;
 };
 
-
-int help();
 unsigned char *unpack_data(const unsigned char *data, unsigned int size, unsigned int *new_size, bool *need_free);
 unsigned char *read_file(const char *path, unsigned int *length);
-bool write_file(const char *path, const void *data, unsigned int length);
+bool write_file(const char *path, unsigned int n, ...);
 void dump_android_img_hdr(struct android_boot_img_hdr *header, unsigned int ps = 0);
 void dump_mtk_container_hdr(struct mtk_container_hdr *header);
 bool is_dir(const char *path);
