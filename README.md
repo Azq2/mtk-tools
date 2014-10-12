@@ -1,4 +1,7 @@
 mtk-tools
 =========
 
-MTK tools
+cd build
+cmake ../
+make
+make install

@@ -1,3 +1,5 @@
+// (c) Azq2, 12.10.2014
+
 #pragma once
 
 #include <cstdio>
