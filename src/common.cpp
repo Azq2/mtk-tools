@@ -12,7 +12,7 @@ unsigned char *unpack_data(const unsigned char *data, unsigned int size, unsigne
 		
 	//	dump_mtk_container_hdr(c.header);
 		
-		*new_size = size;
+		*new_size = c.length;
 		return c.data;
 	}
 	*new_size = size;

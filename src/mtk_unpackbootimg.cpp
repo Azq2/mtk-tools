@@ -87,7 +87,7 @@ int main(int argc, char **argv) {
 		sprintf(out_filename, "%s/%s-cmdline", out_dir, basename((char *) filename));
 		write_file(out_filename, 1, img.header->cmdline, strlen(img.header->cmdline));
 		
-		sprintf(addr_tmp, "%08x", page_size);
+		sprintf(addr_tmp, "%d", page_size);
 		sprintf(out_filename, "%s/%s-pagesize", out_dir, basename((char *) filename));
 		write_file(out_filename, 1, addr_tmp, strlen(addr_tmp));
 		
